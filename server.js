@@ -1,18 +1,20 @@
 // const express = require('express');
 // require('dotenv').config();
 
-import express from 'express';
 import dotenv from 'dotenv';
-import twiml  from 'twilio';
-const { MessagingResponse } = twiml;
+import express from 'express';
 
+import twiml  from 'twilio';
+import twilio  from 'twilio';
+const { MessagingResponse } = twiml;
+dotenv.config()
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/send-message', (req, res) => {
   const accountSid = process.env.ACCOUNT_SID;
   const authToken = process.env.AUTH_TOKEN;
-  const client = require('twilio')(accountSid, authToken);
+  const client = twilio(accountSid, authToken);
 
   client.messages
     .create({
