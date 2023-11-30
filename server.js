@@ -57,7 +57,7 @@ function runScript() {
 }
 
 // Schedule the script to run every day at 19:00
-cron.schedule('51 16 * * *', () => {
+cron.schedule('54 16 * * *', () => {
   console.log('Running the script...');
   runScript();
 });
