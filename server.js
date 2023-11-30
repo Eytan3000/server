@@ -25,9 +25,13 @@ const { MessagingResponse } = require('twilio').twiml;
 
 
 app.post('/receive', (req, res) => {
+
+  const x = req.body;
+  console.log(x);
+
   const twiml = new MessagingResponse();
 
-  twiml.message('The Robots are coming! Head for the hills!');
+  twiml.message('אין קבלת הודעות למספר זה');
 
   res.type('text/xml').send(twiml.toString());
 });
