@@ -21,7 +21,7 @@ app.get('/send-message', (req, res) => {
 });
 
 
-// const { MessagingResponse } = require('twilio').twiml;
+const { MessagingResponse } = require('twilio').twiml;
 
 
 app.post('/receive', (req, res) => {
