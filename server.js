@@ -1,5 +1,10 @@
-const express = require('express');
-require('dotenv').config();
+// const express = require('express');
+// require('dotenv').config();
+
+import express from 'express';
+import dotenv from 'dotenv';
+import twiml  from 'twilio';
+const { MessagingResponse } = twiml;
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,13 +26,10 @@ app.get('/send-message', (req, res) => {
 });
 
 
-const { MessagingResponse } = require('twilio').twiml;
+// const { MessagingResponse } = require('twilio').twiml;
 
 
 app.post('/receive', (req, res) => {
-
-  const x = req.body;
-  console.log(x);
 
   const twiml = new MessagingResponse();
 
