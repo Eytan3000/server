@@ -3,11 +3,9 @@
 
 import dotenv from 'dotenv';
 import express from 'express';
-
-import twiml  from 'twilio';
 import twilio  from 'twilio';
+import cron from 'node-cron';
 
-// const {MessagingResponse} = twiml;
 
 dotenv.config()
 const app = express();
@@ -42,6 +40,27 @@ app.post('/receive', (req, res) => {
   res.type('text/xml').send(twiml.toString());
 });
 
+
+// const cron = require('node-cron');
+
+function runScript() {
+  const accountSid = process.env.ACCOUNT_SID;
+  const authToken = process.env.AUTH_TOKEN;
+  const client = twilio(accountSid, authToken);
+
+  client.messages
+    .create({
+      body: 'eytan test 1',
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+972508657032',
+    })
+}
+
+// Schedule the script to run every day at 19:00
+cron.schedule('51 16 * * *', () => {
+  console.log('Running the script...');
+  runScript();
+});
 
 
 
