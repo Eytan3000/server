@@ -6,7 +6,9 @@ import express from 'express';
 
 import twiml  from 'twilio';
 import twilio  from 'twilio';
-const { MessagingResponse } = twiml;
+
+// const {MessagingResponse} = twiml;
+
 dotenv.config()
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,7 +30,7 @@ app.get('/send-message', (req, res) => {
 });
 
 
-// const { MessagingResponse } = require('twilio').twiml;
+const { MessagingResponse } = twilio.twiml;
 
 
 app.post('/receive', (req, res) => {
